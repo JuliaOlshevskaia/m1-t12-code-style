@@ -9,6 +9,7 @@ public class DepositCalculator {
 
     double calculateSimplePercent(double depositAmount, double yearRate, int depositPeriod) {
         double pay = depositAmount + depositAmount * yearRate * depositPeriod;
+
         return roundToDegree(pay,2); //double pay можно здесь ввести по аналогии с метоом выше
     }
 
