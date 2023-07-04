@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 public class DepositCalculator {
-    double calculateComplexPercent(double amount, double yearRate, int depositPeriod) { //amount название можно добавить префикс deposit, чтобы было по аналогии с depositPeriod
-        double pay = amount * Math.pow((1 + yearRate / 12), 12 * depositPeriod);
+    double calculateComplexPercent(double depositAmount, double yearRate, int depositPeriod) { //amount название можно добавить префикс deposit, чтобы было по аналогии с depositPeriod
+        double pay = depositAmount * Math.pow((1 + yearRate / 12), 12 * depositPeriod);
 
         return roundToDegree(pay,2);
     }
 
-    double calculateSimplePercent(double amount, double yearRate, int depositPeriod) {
-        return roundToDegree(amount + amount * yearRate * depositPeriod,2); //double pay можно здесь ввести по аналогии с метоом выше
+    double calculateSimplePercent(double depositAmount, double yearRate, int depositPeriod) {
+        double pay = depositAmount + depositAmount * yearRate * depositPeriod;
+        return roundToDegree(pay,2); //double pay можно здесь ввести по аналогии с метоом выше
     }
 
     double roundToDegree(double value, int places) {
@@ -20,11 +21,12 @@ public class DepositCalculator {
     void capitalizeDeposit() {
         int period;
         int action;
+        int amount;
         // может по аналогии int amount?
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введите сумму вклада в рублях:");
-        int amount = scanner.nextInt();
+        amount = scanner.nextInt();
         System.out.println("Введите срок вклада в годах:");
         period = scanner.nextInt();
         System.out.println("Выберите тип вклада, 1 - вклад с обычным процентом, 2 - вклад с капитализацией:");
